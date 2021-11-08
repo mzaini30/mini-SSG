@@ -1,10 +1,10 @@
 {
-  "name": "mini-ssg",
-  "version": "0.2.2",
+  "name": "mini-ssg-zen",
+  "version": "0.0.1",
   "description": "Simple static site generator, to prevent you write DRY HTML files. ",
   "main": "src/index.js",
   "bin": {
-    "minissg": "./src/index.js"
+    "ssg": "./src/index.js"
   },
   "scripts": {
     "start": "node src/index.js",
@@ -14,10 +14,10 @@
   "homepage": "https://minissg.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hilmanski/mini-SSG.git"
+    "url": "git+https://github.com/mzaini30/mini-SSG.git"
   },
   "bugs": {
-    "url": "https://github.com/hilmanski/mini-SSG/issues"
+    "url": "https://github.com/mzaini30/mini-SSG/issues"
   },
   "keywords": [
     "ssg"

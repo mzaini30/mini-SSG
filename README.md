@@ -1,4 +1,7 @@
 # Mini SSG
+
+> Salinan dari [hilmanski/mini-SSG](https://github.com/hilmanski/mini-SSG)
+
 Simple static site generator, to prevent you write DRY HTML files with minimal syntax  
 Built with Nodejs  
 Inspired by Laravel Blade Template and Sergey.cool SSG
@@ -14,10 +17,21 @@ For someone who works with a lot of html files and many reuse components (header
 ## Why and How to use it
 Check out [mini SSG website](https://minissg.vercel.app)
 
+## Menggunakan
+
+Tambahkan di `package.json`:
+
+```json
+"scripts": {
+	"dev": "ssg --watch",
+	"build": "ssg"
+},
+```
+
 ## Syntax preview
 
 Import page
-```
+```html
 @import(header)		
 
 <p>Your awesome content</p>
@@ -26,7 +40,7 @@ Import page
 ```
 
 Use general layout
-```
+```html
 @layout(base) 
 
 @section(title, Your Page Title)
@@ -39,7 +53,7 @@ Use general layout
 ```
 
 How layout looks like
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +67,7 @@ How layout looks like
 ```
 
 Layout can include multiple imports
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +83,7 @@ Layout can include multiple imports
 ```
 
 Need components? don't worry!
-```
+```html
 
 <h2>Other stuff</h2>
 
@@ -86,7 +100,7 @@ Need components? don't worry!
 ```
 
 How your component looks like
-```
+```html
 <div>
 	<div class="flex is-space-around">
 		<div class="someClass">
@@ -99,7 +113,7 @@ How your component looks like
 ```
 
 If attach need a default value as fallback
-```
+```html
 <title>@attach(title, My default title)</title>
 ```
 
