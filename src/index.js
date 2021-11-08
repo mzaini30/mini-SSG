@@ -6,9 +6,9 @@ const path = require('path');
 const dir = {
 	static: "./dev/static",
 	pages : "./dev/pages",
-	layout : "./dev/_layouts",
-	import : "./dev/_imports",
-	component : "./dev/_components",
+	layout : "./dev/layouts",
+	import : "./dev/imports",
+	component : "./dev/components",
 	public : "./public"
 }
 
