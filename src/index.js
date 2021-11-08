@@ -60,7 +60,7 @@ function generateFile(item, fileName) {
 		
 		//except index, no folder.
 		if(folder != 'index') {
-			createFolderIfNone('./public/'+folder)
+			// createFolderIfNone('./public/'+folder)
 			// fileName = folder + '/index.html'
 			fileName = folder + '.html'
 		}
