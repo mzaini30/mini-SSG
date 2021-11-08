@@ -28,6 +28,21 @@ Tambahkan di `package.json`:
 },
 ```
 
+## Catatan
+
+```javascript
+const dir = {
+	static: "./dev/static",
+	pages : "./dev/pages",
+	layout : "./dev/layouts",
+	import : "./dev/imports",
+	component : "./dev/components",
+	public : "./public"
+}
+```
+
+Jadi, untuk layouts, imports, dan components nggak pakai underscore karena akan hilang kalau di Android Studio.
+
 ## Syntax preview
 
 Import page
