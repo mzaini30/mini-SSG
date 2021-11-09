@@ -294,8 +294,9 @@ if(isWatching) {
 		watch: "./public",
 		root: "./public",
 		file: "index.html",
-		wait: 1000,
+		// wait: 1000,
 		logLevel: 0,
+		noCssInject: true
 	};
 	liveServer.start(params);
 	
