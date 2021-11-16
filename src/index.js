@@ -51,7 +51,7 @@ pages.forEach(function(page) {
 //Static folder
 exec(windi, () => {
 	fs.copy(dir.static, './public/')
-		.then(() => console.log('success!'))
+		.then(() => {/*console.log('success!')*/})
 		.catch(err => err)
 })
 
