@@ -3,6 +3,14 @@
 const fs = require('fs-extra')
 const path = require('path');
 
+const {exec} = require('child_process')
+let windi
+if (process.argv.includes('--watch')) {
+	windi = "windicss './dev/pages/**/*.html' './dev/layouts/**/*.html' './dev/components/**/*.html' './dev/imports/**/*.html' -to './dev/static/windi.css' --style"
+} else {
+	windi = "windicss './dev/pages/**/*.html' './dev/layouts/**/*.html' './dev/components/**/*.html' './dev/imports/**/*.html' -mto './dev/static/windi.css' --style"
+}
+
 const dir = {
 	static: "./dev/static",
 	pages : "./dev/pages",
@@ -30,16 +38,22 @@ let codeTagHolder = []
 
 //Pages file
 const pages = fs.readdirSync(dir.pages)
-fs.emptyDirSync(dir.public)
+
+if (!process.argv.includes('--watch')) {
+	fs.emptyDirSync(dir.public)
+}
+
 createFolderIfNone(dir.public)
 pages.forEach(function(page) {
 	generateFile(`${dir.pages}/${page}`, page)
 })
 
 //Static folder
-fs.copy(dir.static, './public/')
-	.then(() => console.log('success!'))
-	.catch(err => err)
+exec(windi, () => {
+	fs.copy(dir.static, './public/')
+		.then(() => console.log('success!'))
+		.catch(err => err)
+})
 
 
 function generateFile(item, fileName) {	
@@ -301,13 +315,14 @@ if(isWatching) {
 		watch: "./public",
 		root: "./public",
 		file: "index.html",
-		// wait: 1000,
 		logLevel: 0,
-		noCssInject: true
+		noCssInject: false
 	};
 	liveServer.start(params);
 	
-	chokidar.watch('./dev').on('all', (event, path) => {
+	chokidar.watch('./dev', {
+		ignored: './dev/static/windi.css'
+	}).on('all', (event, path) => {
 	  runSSG()
 	});
 }

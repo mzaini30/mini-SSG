@@ -1,6 +1,6 @@
 {
   "name": "mini-ssg-zen",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Simple static site generator, to prevent you write DRY HTML files. ",
   "main": "src/index.js",
   "bin": {
@@ -26,6 +26,7 @@
   "dependencies": {
     "chokidar": "^3.5.2",
     "fs-extra": "^10.0.0",
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "windicss": "^3.2.1"
   }
 }
