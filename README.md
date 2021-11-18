@@ -66,7 +66,7 @@ Isi dari `dev/components/sidebar.html`:
 
 ```html
 <div>
-	@attach(isi)
+  @attach(isi)
 </div>
 ```
 
@@ -74,9 +74,9 @@ Isi dari `dev/pages/index.html`:
 
 ```html
 @component(sidebar)
-	@slot(isi)
-		<img src="hello.jpg" alt="">
-	@endslot
+  @slot(isi)
+    <img src="hello.jpg" alt="">
+  @endslot
 @endcomponent
 ```
 
@@ -92,12 +92,12 @@ Isi dari `dev/pages/about.html`:
 
 ```html
 <html>
-	<head>
-		@import(head)
-	</head>
-	<body>
-		<p>Halo</p>
-	</body>
+  <head>
+    @import(head)
+  </head>
+  <body>
+    <p>Halo</p>
+  </body>
 </html>
 ```
 
@@ -116,12 +116,12 @@ Isi dari `dev/pages/baca.html`:
 @layout(blog)
 
 @section(judul)
-	Ini adalah Judul
+  Ini adalah Judul
 @endsection
 
 @section(isi)
-	<p>Hello World...</p>
-	<p>Bagaimana kabarnya?</p>
+  <p>Hello World...</p>
+  <p>Bagaimana kabarnya?</p>
 @endsection
 ```
 
@@ -133,10 +133,10 @@ Panggil dulu dengan:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="windi.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="windi.css">
 </head>
 <body>
 	
@@ -156,9 +156,9 @@ Panggil dulu dengan:
 <p class="judulnya">Ini adalah Judul</p>
 
 <style lang="windi">
-	.judulnya {
-		@apply px-5 py-1 bg-red-300
-	}
+  .judulnya {
+    @apply px-5 py-1 bg-red-300
+  }
 </style>
 ```
 
@@ -168,19 +168,19 @@ Panggil dulu dengan:
 
 ```json
 {
-	"config": {
-		"markup": {
-			"snippets": {
-				"attach": "{@attach()}",
-				"import": "{@import()}",
-				"layout": "{@layout()\n\n@section()\n\t\n@endsection}",
-				"section": "{@section()\n\t\n@endsection}",
-				"component": "{@component()\n\t@slot()\n\t\t\n\t@endslot\n@endcomponent}",
-				"slot": "{@slot()\n\t\n@endslot}",
-				"windi": "style[lang=windi]",
-				"petite": "script>{PetiteVue.createApp({}).mount()\n}"
-			}
-		}
-	}
+  "config": {
+    "markup": {
+      "snippets": {
+        "attach": "{@attach()}",
+        "import": "{@import()}",
+        "layout": "{@layout()\n\n@section()\n\t\n@endsection}",
+        "section": "{@section()\n\t\n@endsection}",
+        "component": "{@component()\n\t@slot()\n\t\t\n\t@endslot\n@endcomponent}",
+        "slot": "{@slot()\n\t\n@endslot}",
+        "windi": "style[lang=windi]",
+        "petite": "script>{PetiteVue.createApp({}).mount()\n}"
+      }
+    }
+  }
 }
 ```
