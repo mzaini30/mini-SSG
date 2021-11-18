@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const {minify} = require('html-minifier')
 const fs = require('fs-extra')
 const path = require('path');
 
@@ -78,6 +79,13 @@ function generateFile(item, fileName) {
 			// fileName = folder + '/index.html'
 			fileName = folder + '.html'
 		}
+	}
+
+	if (!process.argv.includes('--watch')) {
+		content = minify(content, {
+			collapseWhitespace: true,
+			removeComments: true
+		})
 	}
 
 	//save to new Dir
