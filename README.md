@@ -19,6 +19,17 @@ Lalu, install dengan:
 pnpm i -D mini-ssg-zen
 ```
 
+Lalu, pada `package.json`, tambahkan kode berikut:
+
+```json
+"scripts": {
+  "dev": "ssg --watch",
+  "build": "ssg"
+}
+```
+
+Terus, kalau ingin menjalankan mode dev, tinggal jalankan `pnpm dev`. Untuk build, jalankan aja `pnpm build`.
+
 ## Struktur Folder
 
 ```
