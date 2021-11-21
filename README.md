@@ -125,6 +125,16 @@ Isi dari `dev/pages/baca.html`:
 @endsection
 ```
 
+### Menggunakan Markdown (plus Shiki)
+
+```markdown
+@markdown
+  # Judul
+
+  Ini adalah isi. _Tulisan miring_ **tebal**
+@endmarkdown
+```
+
 ## Menggunakan Windi
 
 Panggil dulu dengan:
@@ -175,6 +185,7 @@ Panggil dulu dengan:
         "import": "{@import()}",
         "layout": "{@layout()\n\n@section()\n\t\n@endsection}",
         "section": "{@section()\n\t\n@endsection}",
+        "markdown": "{@markdown\n\t\n@endmarkdown}",
         "component": "{@component()\n\t@slot()\n\t\t\n\t@endslot\n@endcomponent}",
         "slot": "{@slot()\n\t\n@endslot}",
         "windi": "style[lang=windi]",

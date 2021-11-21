@@ -4,6 +4,13 @@ const {minify} = require('html-minifier')
 const fs = require('fs-extra')
 const path = require('path');
 
+const md = require('markdown-it')()
+const shiki = require('markdown-it-shiki').default
+
+md.use(shiki, {
+	theme: 'nord'
+})
+
 const {exec} = require('child_process')
 let windi
 if (process.argv.includes('--watch')) {
@@ -30,6 +37,7 @@ const patterns = {
 	simpleSection: /(@section\()(.*?),(.*?)(\))/g,
 	component: /(@component)([\S\s]*?)(@endcomponent)/g,
 	slot: /(@slot)([\S\s]*?)(@endslot)/g,
+	markdown: /(@markdown)([\S\s]*?)(@endmarkdown)/g,
 }
 
 
@@ -106,7 +114,27 @@ function generatePageSubFolder(item) {
 	return
 }
 
+function renderMarkdown(teks){
+	let pecahBaris = teks.split('\n')
+	pecahBaris = pecahBaris.filter((x, n) => n != 0)
+
+	let karakterHarusLenyap = pecahBaris[0].match(/^\s+/)
+	// hasil: ["\t\t"]
+	karakterHarusLenyap = new RegExp(`^${karakterHarusLenyap[0]}`, 'g')
+
+	teks = teks.split('\n').map(x => x.replace(karakterHarusLenyap, '')).join('\n')
+
+	return md.render(teks)
+}
+
 function renderPage(content) {
+
+	const dapatMarkdown = content.match(patterns.markdown)
+	if (dapatMarkdown != null) {
+		content = content.replace(patterns.markdown, function(match, p1, p2){
+			return renderMarkdown(p2)
+		})
+	}
 	
 	//Render Layout
 	const layoutLabel = content.match(patterns.layout)
