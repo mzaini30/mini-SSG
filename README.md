@@ -4,6 +4,7 @@
 
 1. Hasil build, minified HTML
 2. Sudah include dengan Windi CSS
+3. Bisa main Markdown
 
 ## Instalasi
 
