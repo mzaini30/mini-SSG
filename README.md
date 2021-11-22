@@ -5,6 +5,7 @@
 1. Hasil build, minified HTML
 2. Sudah include dengan Windi CSS
 3. Bisa main Markdown
+4. Auto generate sitemap
 
 ## Instalasi
 
@@ -17,7 +18,7 @@ shamefully-hoist = true
 Lalu, install dengan:
 
 ```bash
-pnpm i -D mini-ssg-zen
+npm i -D mini-ssg-zen
 ```
 
 Lalu, pada `package.json`, tambahkan kode berikut:
@@ -29,7 +30,7 @@ Lalu, pada `package.json`, tambahkan kode berikut:
 }
 ```
 
-Terus, kalau ingin menjalankan mode dev, tinggal jalankan `pnpm dev`. Untuk build, jalankan aja `pnpm build`.
+Terus, kalau ingin menjalankan mode dev, tinggal jalankan `npm run dev`. Untuk build, jalankan aja `npm run build`.
 
 ## Struktur Folder
 
@@ -174,6 +175,18 @@ Panggil dulu dengan:
 ```
 
 > Buat `class` yang unik karena dia cuma generate satu biji file `windi.css`
+
+## Generate Sitemap
+
+Buat dulu file `mini.json` yang isinya seperti ini:
+
+```json
+{
+  "situs": "https://kucing.com"
+}
+```
+
+Lalu, build dengan `npm run build`.
 
 ## Snippet dengan Emmet
 

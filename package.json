@@ -1,6 +1,6 @@
 {
   "name": "mini-ssg-zen",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Simple static site generator, to prevent you write DRY HTML files. ",
   "main": "src/index.js",
   "bin": {
@@ -10,7 +10,6 @@
     "start": "node src/index.js",
     "dev": "node src/index.js --watch"
   },
-  "homepage": "https://minissg.vercel.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mzaini30/mini-SSG.git"
@@ -30,6 +29,9 @@
     "live-server": "^1.2.1",
     "markdown-it": "^12.2.0",
     "markdown-it-shiki": "^0.3.0",
+    "read-json-sync": "^2.0.1",
+    "recursive-readdir-sync": "^1.0.6",
+    "sitemap-manager": "^2.1.0",
     "windicss": "^3.2.1"
   }
 }

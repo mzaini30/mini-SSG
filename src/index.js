@@ -4,6 +4,8 @@ const {minify} = require('html-minifier')
 const fs = require('fs-extra')
 const path = require('path');
 
+const {existsSync} = require('fs')
+
 const md = require('markdown-it')()
 const shiki = require('markdown-it-shiki').default
 
@@ -38,6 +40,7 @@ const patterns = {
 	component: /(@component)([\S\s]*?)(@endcomponent)/g,
 	slot: /(@slot)([\S\s]*?)(@endslot)/g,
 	markdown: /(@markdown)([\S\s]*?)(@endmarkdown)/g,
+	windi: /(<style lang=.windi.>)([\S\s]*?)(<\/style>)/g,
 }
 
 
@@ -64,6 +67,31 @@ exec(windi, () => {
 		.catch(err => err)
 })
 
+function buatSitemap(situs){
+	const recursive = require('recursive-readdir-sync')
+	const { SitemapManager } = require('sitemap-manager')
+
+	let files = recursive('public')
+	files = ['public/index.html', ...files]
+	files = files.map(x => x.replace(/^public/, situs))
+
+	let filesRapi = []
+	files = files.forEach(x => {
+		filesRapi = [...filesRapi, {
+			loc: x,
+			lastmod: new Date(),
+			changefreq: 3,
+			priority: 0.5
+		}]
+	})
+
+	const MySitemap = new SitemapManager({
+		siteURL: situs
+	})
+
+	MySitemap.addUrl('mini', filesRapi)
+	MySitemap.finish()
+}
 
 function generateFile(item, fileName) {	
 	//check if DIR
@@ -97,10 +125,23 @@ function generateFile(item, fileName) {
 	}
 
 	if (!process.argv.includes('--watch')) {
+		const cekWindi = content.match(patterns.windi)
+		if (cekWindi != null) {
+			content = content.replace(patterns.windi, '')
+		}
+
 		content = minify(content, {
 			collapseWhitespace: true,
 			removeComments: true
 		})
+
+		let situs = ''
+		if (existsSync('./mini.json')){
+			const ambilConfig = require('read-json-sync')('mini.json')
+			if (ambilConfig.situs){
+				buatSitemap(ambilConfig.situs)
+			}
+		}
 	}
 
 	//save to new Dir

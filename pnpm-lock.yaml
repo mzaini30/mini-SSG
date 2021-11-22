@@ -7,6 +7,9 @@ specifiers:
   live-server: ^1.2.1
   markdown-it: ^12.2.0
   markdown-it-shiki: ^0.3.0
+  read-json-sync: ^2.0.1
+  recursive-readdir-sync: ^1.0.6
+  sitemap-manager: ^2.1.0
   windicss: ^3.2.1
 
 dependencies:
@@ -16,6 +19,9 @@ dependencies:
   live-server: 1.2.1
   markdown-it: 12.2.0
   markdown-it-shiki: 0.3.0
+  read-json-sync: 2.0.1
+  recursive-readdir-sync: 1.0.6
+  sitemap-manager: 2.1.0
   windicss: 3.2.1
 
 packages:
@@ -1108,6 +1114,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /read-json-sync/2.0.1:
+    resolution: {integrity: sha512-8ZJRyVJ6jKMzXsuoTTb/LPQusL/bNdNZi1GV5cZ8m9JSvHGIfI7caizhNOPkLVaZWGUrARc88cAftSnRE1liDg==}
+    dev: false
+
   /readable-stream/2.3.7:
     resolution: {integrity: sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==}
     dependencies:
@@ -1134,6 +1144,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.0
+    dev: false
+
+  /recursive-readdir-sync/1.0.6:
+    resolution: {integrity: sha1-Hb9tMvPFu4083pemxYjVR6nhPVY=}
     dev: false
 
   /regex-not/1.0.2:
@@ -1243,6 +1257,12 @@ packages:
       jsonc-parser: 3.0.0
       onigasm: 2.2.5
       vscode-textmate: 5.2.0
+    dev: false
+
+  /sitemap-manager/2.1.0:
+    resolution: {integrity: sha512-Gj5zMtkastJi7Bt5qkYNp6lWhPy86+WVHuGjRGAQ6BRr9X2/g31kJNBza153sgVxvGwqwEhhtRHSnlsMT83/jg==}
+    dependencies:
+      xml: 1.0.1
     dev: false
 
   /snapdragon-node/2.1.1:
@@ -1492,6 +1512,10 @@ packages:
     resolution: {integrity: sha512-LusrIrryBFHAPQ/OOTbS4EWWuzI6eGeJglI9nQ3kDBr1cqH69NWt8Z8q59f9kTkgptXroejmWfksWwqgHs8EVw==}
     engines: {node: '>= 12'}
     hasBin: true
+    dev: false
+
+  /xml/1.0.1:
+    resolution: {integrity: sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=}
     dev: false
 
   /yallist/3.1.1:
