@@ -89,6 +89,13 @@ function generateFile(item, fileName) {
 		}
 	}
 
+	const dapatMarkdown = content.match(patterns.markdown)
+	if (dapatMarkdown != null) {
+		content = content.replace(patterns.markdown, function(match, p1, p2){
+			return renderMarkdown(p2)
+		})
+	}
+
 	if (!process.argv.includes('--watch')) {
 		content = minify(content, {
 			collapseWhitespace: true,
@@ -128,13 +135,6 @@ function renderMarkdown(teks){
 }
 
 function renderPage(content) {
-
-	const dapatMarkdown = content.match(patterns.markdown)
-	if (dapatMarkdown != null) {
-		content = content.replace(patterns.markdown, function(match, p1, p2){
-			return renderMarkdown(p2)
-		})
-	}
 	
 	//Render Layout
 	const layoutLabel = content.match(patterns.layout)
