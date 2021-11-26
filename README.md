@@ -1,5 +1,9 @@
 # Mini SSG Zen
 
+<p align='center'>
+  <img src='tsukuyomi-komoe.png'>
+</p>
+
 ## Perbedaannya dengan Mini SSG
 
 1. Hasil build, minified HTML

@@ -1,4 +1,1 @@
-node_modules/
-deploy.sh
-/dev
-/public
+node_modules

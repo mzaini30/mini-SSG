@@ -72,7 +72,7 @@ function buatSitemap(situs){
 	const { SitemapManager } = require('sitemap-manager')
 
 	let files = recursive('public')
-	files = ['public/index.html', ...files]
+	files = ['public/', ...files]
 	files = files.map(x => x.replace(/^public/, situs))
 
 	let filesRapi = []

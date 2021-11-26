@@ -1,14 +1,10 @@
 {
   "name": "mini-ssg-zen",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Simple static site generator, to prevent you write DRY HTML files. ",
   "main": "src/index.js",
   "bin": {
     "ssg": "./src/index.js"
-  },
-  "scripts": {
-    "start": "node src/index.js",
-    "dev": "node src/index.js --watch"
   },
   "repository": {
     "type": "git",
