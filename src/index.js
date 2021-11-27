@@ -326,6 +326,8 @@ function renderSlot(rawComp, rawAttach) {
 	let slotContent
 	if (matchSlot) {
 		slotContent = matchSlot.replace(`(${attachName})`,'')
+	} else {
+		slotContent = ''
 	}
 
 	return slotContent
