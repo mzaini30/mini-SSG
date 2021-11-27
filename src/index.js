@@ -124,6 +124,11 @@ function generateFile(item, fileName) {
 		})
 	}
 
+	const cekAttachKosong = content.match(patterns.attach)
+	if (cekAttachKosong != null) {
+		content = content.replace(patterns.attach, '')
+	}
+
 	if (!process.argv.includes('--watch')) {
 		const cekWindi = content.match(patterns.windi)
 		if (cekWindi != null) {
@@ -398,7 +403,10 @@ if(isWatching) {
 	liveServer.start(params);
 	
 	chokidar.watch('./dev', {
-		ignored: './dev/static/windi.css'
+		ignored: './dev/static/windi.css',
+		awaitWriteFinish: {
+    	stabilityThreshold: 500
+    }
 	}).on('all', (event, path) => {
 	  runSSG()
 	});
