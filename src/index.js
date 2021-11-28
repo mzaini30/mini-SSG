@@ -117,13 +117,6 @@ function generateFile(item, fileName) {
 		}
 	}
 
-	const dapatMarkdown = content.match(patterns.markdown)
-	if (dapatMarkdown != null) {
-		content = content.replace(patterns.markdown, function(match, p1, p2){
-			return renderMarkdown(p2)
-		})
-	}
-
 	const cekAttachKosong = content.match(patterns.attach)
 	if (cekAttachKosong != null) {
 		content = content.replace(patterns.attach, '')
@@ -177,10 +170,17 @@ function renderMarkdown(teks){
 
 	teks = teks.split('\n').map(x => x.replace(karakterHarusLenyap, '')).join('\n')
 
-	return md.render(teks)
+	return md.render(teks).replace(/@/g, '&commat;')
 }
 
 function renderPage(content) {
+
+	const dapatMarkdown = content.match(patterns.markdown)
+	if (dapatMarkdown != null) {
+		content = content.replace(patterns.markdown, function(match, p1, p2){
+			return renderMarkdown(p2)
+		})
+	}
 	
 	//Render Layout
 	const layoutLabel = content.match(patterns.layout)
