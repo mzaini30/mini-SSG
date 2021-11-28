@@ -166,7 +166,7 @@ function renderMarkdown(teks){
 
 	let karakterHarusLenyap = pecahBaris[0].match(/^\s+/)
 	// hasil: ["\t\t"]
-	karakterHarusLenyap = new RegExp(`^${karakterHarusLenyap[0]}`, 'g')
+	karakterHarusLenyap = karakterHarusLenyap ? new RegExp(`^${karakterHarusLenyap[0]}`, 'g') : ''
 
 	teks = teks.split('\n').map(x => x.replace(karakterHarusLenyap, '')).join('\n')
 
