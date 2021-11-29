@@ -13,16 +13,10 @@
 
 ## Instalasi
 
-Buat file `.npmrc` yang berisi:
-
-```toml
-shamefully-hoist = true
-```
-
-Lalu, install dengan:
+Install dengan:
 
 ```bash
-npm i -D mini-ssg-zen
+npm i mini-ssg-zen
 ```
 
 Lalu, pada `package.json`, tambahkan kode berikut:
