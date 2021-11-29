@@ -10,6 +10,7 @@
 2. Sudah include dengan Windi CSS
 3. Bisa main Markdown
 4. Auto generate sitemap
+5. Bisa nested/deep partial HTML
 
 ## Instalasi
 

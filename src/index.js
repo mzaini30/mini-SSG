@@ -9,6 +9,9 @@ const {existsSync} = require('fs')
 const md = require('markdown-it')()
 const shiki = require('markdown-it-shiki').default
 
+// zen
+let konten
+
 md.use(shiki, {
 	theme: 'nord'
 })
@@ -106,7 +109,11 @@ function generateFile(item, fileName) {
 
 	const ext = path.extname(fileName);
 	if(ext == ".html") {
-		content = renderPage(content)
+		// zen
+		konten = content
+		renderPage()
+		content = konten
+		
 		const folder = fileName.split('.')[0] //get name with subfolder
 		
 		//except index, no folder.
@@ -173,60 +180,117 @@ function renderMarkdown(teks){
 	return md.render(teks).replace(/@/g, '&commat;')
 }
 
-function renderPage(content) {
+function renderPage() {
 
-	const dapatMarkdown = content.match(patterns.markdown)
+	const dapatMarkdown = konten.match(patterns.markdown)
 	if (dapatMarkdown != null) {
-		content = content.replace(patterns.markdown, function(match, p1, p2){
+		konten = konten.replace(patterns.markdown, function(match, p1, p2){
 			return renderMarkdown(p2)
 		})
+
+		if (konten.match(patterns.markdown) != null){
+			renderPage()				
+		} else {
+			cekLagi()
+		}		
 	}
 	
 	//Render Layout
-	const layoutLabel = content.match(patterns.layout)
+	// zen
+	const layoutLabel = konten.match(patterns.layout)
 	if(layoutLabel != null) {
-		content = content.replace(patterns.layout, renderTag.bind(this, 'layout'))
+		konten = konten.replace(patterns.layout, renderTag.bind(this, 'layout'))
+
 	}
-	content = maskCodeTag(content)
+	konten = maskCodeTag(konten)
 
 	//Render simple section
-	const simpleSectionLabels = content.match(patterns.simpleSection)
+	const simpleSectionLabels = konten.match(patterns.simpleSection)
 	if(simpleSectionLabels != null) {
 		simpleSectionLabels.forEach(function(match){
-			content = content.replace(patterns.attach, renderSimpleSection.bind(this, content))
+			konten = konten.replace(patterns.attach, renderSimpleSection.bind(this, konten))
 		})
 
-		content = content.replace(patterns.simpleSection, '')
+		// zen
+		if (konten.match(patterns.simpleSection) != null){
+			renderPage()				
+		}	else {
+			konten = konten.replace(patterns.simpleSection, '')
+			cekLagi()
+		}	
+
+		// konten = konten.replace(patterns.simpleSection, '')
 	}
 
 	//Render complex section / swap attach & section
-	const attachLabels = content.match(patterns.attach)
+	// zen
+	const attachLabels = konten.match(patterns.attach)
 	if(attachLabels != null) {
 		attachLabels.forEach(function(match){
-			content = content.replace(patterns.attach, renderLayout.bind(this, content))
+			konten = konten.replace(patterns.attach, renderLayout.bind(this, konten))
+
 		})
 
-		content = content.replace(patterns.section, '')
+		if (konten.match(patterns.layout) != null){
+			renderPage()				
+		} else {
+			konten = konten.replace(patterns.section, '')
+			cekLagi()
+		}		
+
+		// zen
+		// konten = konten.replace(patterns.section, '')
+
 	}
 
 	//Render Import pages
-	const importLabels = content.match(patterns.import)
+	const importLabels = konten.match(patterns.import)
 	if(importLabels != null) {
 		importLabels.forEach(function(match){
-			content = content.replace(patterns.import, renderTag.bind(this, 'import'))
+			konten = konten.replace(patterns.import, renderTag.bind(this, 'import'))
 		})
+
+		if (konten.match(patterns.import) != null){
+			renderPage()				
+		}	else {
+			cekLagi()
+		}	
 	}
 
 	//Render components
-	const componentLabels = content.match(patterns.component)
+	const componentLabels = konten.match(patterns.component)
 	if(componentLabels != null) {
 		componentLabels.forEach(function(match){
-			content = content.replace(patterns.component, renderComponent.bind(this, content))
+			konten = konten.replace(patterns.component, renderComponent.bind(this, konten))
 		})
+
+		if (konten.match(patterns.component) != null){
+			renderPage()				
+		} else {
+			cekLagi()
+		}		
 	}
 
-	return unMaskCodeTag(content.trim())
+	// zen
+	function cekLagi(){
+		if (
+			konten.match(patterns.markdown) != null || 
+			konten.match(patterns.simpleSection) != null ||
+			konten.match(patterns.layout) != null ||
+			konten.match(patterns.import) != null ||
+			konten.match(patterns.component) != null
+		) {
+			renderPage()
+		} else {
+			konten = unMaskCodeTag(konten.trim())
+		}
+	}
+
+	// return unMaskCodeTag(konten.trim())
+
 }
+
+
 
 function maskCodeTag(content) {
 	const codeTags = content.match(patterns.codeTag)
