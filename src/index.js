@@ -293,24 +293,26 @@ function renderPage() {
 
 
 function maskCodeTag(content) {
-	const codeTags = content.match(patterns.codeTag)
-	if(codeTags != null) {
-		codeTags.forEach(function(match){
-			let newHolder = 'code-nr-' + Math.floor(Math.random() * 99999)
-			codeTagHolder[newHolder] = match
-			content = content.replace(match, newHolder)
-		})
-	}
+	// zen
+	// const codeTags = content.match(patterns.codeTag)
+	// if(codeTags != null) {
+	// 	codeTags.forEach(function(match){
+	// 		let newHolder = 'code-nr-' + Math.floor(Math.random() * 99999)
+	// 		codeTagHolder[newHolder] = match
+	// 		content = content.replace(match, newHolder)
+	// 	})
+	// }
 
 	return content
 }
 
 function unMaskCodeTag(content) {
-	if(codeTagHolder != null)  {
-		for (const [key, value] of Object.entries(codeTagHolder)) {
-		  content = content.replace(key, value)
-		}
-	}
+	// zen
+	// if(codeTagHolder != null)  {
+	// 	for (const [key, value] of Object.entries(codeTagHolder)) {
+	// 	  content = content.replace(key, value)
+	// 	}
+	// }
 
 	return content
 }
