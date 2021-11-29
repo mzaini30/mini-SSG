@@ -294,7 +294,7 @@ function renderLayout(content, text) {
 		return text;
 	}
 
-	const sectionContent = matchSection.replace(`(${attachName})`,'')
+	const sectionContent = matchSection.replace(`(${attachName})`,'').trim()
 	return sectionContent
 }
 
@@ -325,7 +325,7 @@ function renderSlot(rawComp, rawAttach) {
 	
 	let slotContent
 	if (matchSlot) {
-		slotContent = matchSlot.replace(`(${attachName})`,'')
+		slotContent = matchSlot.replace(`(${attachName})`,'').trim()
 	} else {
 		slotContent = ''
 	}
