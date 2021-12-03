@@ -15,6 +15,10 @@ let konten
 md.use(shiki, {
 	theme: 'nord'
 })
+md.use(require('markdown-it-github-headings'), {
+	prefixHeadingIds: false,
+	enableHeadingLinkIcons: false
+})
 
 const {exec} = require('child_process')
 let windi

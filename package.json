@@ -1,6 +1,6 @@
 {
   "name": "mini-ssg-zen",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Simple static site generator, to prevent you write DRY HTML files. ",
   "main": "src/index.js",
   "bin": {
@@ -24,6 +24,7 @@
     "html-minifier": "^4.0.0",
     "live-server": "^1.2.1",
     "markdown-it": "^12.2.0",
+    "markdown-it-github-headings": "^2.0.0",
     "markdown-it-shiki": "^0.3.0",
     "read-json-sync": "^2.0.1",
     "recursive-readdir-sync": "^1.0.6",

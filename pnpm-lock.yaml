@@ -6,6 +6,7 @@ specifiers:
   html-minifier: ^4.0.0
   live-server: ^1.2.1
   markdown-it: ^12.2.0
+  markdown-it-github-headings: ^2.0.0
   markdown-it-shiki: ^0.3.0
   read-json-sync: ^2.0.1
   recursive-readdir-sync: ^1.0.6
@@ -18,6 +19,7 @@ dependencies:
   html-minifier: 4.0.0
   live-server: 1.2.1
   markdown-it: 12.2.0
+  markdown-it-github-headings: 2.0.0
   markdown-it-shiki: 0.3.0
   read-json-sync: 2.0.1
   recursive-readdir-sync: 1.0.6
@@ -527,6 +529,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /github-slugger/1.4.0:
+    resolution: {integrity: sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==}
+    dev: false
+
   /glob-parent/3.1.0:
     resolution: {integrity: sha1-nmr2KZ2NO9K9QEMIMr0RPfkGxa4=}
     dependencies:
@@ -579,6 +585,10 @@ packages:
   /he/1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
+    dev: false
+
+  /html-entities/1.4.0:
+    resolution: {integrity: sha512-8nxjcBcd8wovbeKx7h3wTji4e6+rhaVuPNpMqwWgnHh+N9ToqsCs6XztWRBPQ+UtzsoMAdKZtUENoVzU/EMtZA==}
     dev: false
 
   /html-minifier/4.0.0:
@@ -636,6 +646,12 @@ packages:
 
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
+    dev: false
+
+  /innertext/1.0.3:
+    resolution: {integrity: sha512-ZC410b7IbrTrmt8bQb27xUOJgXkJu+XL6MVncb9FGyxjRIHyQqNjpSDY20zvSUttkAiYj0dait/67/sXyWvwYg==}
+    dependencies:
+      html-entities: 1.4.0
     dev: false
 
   /is-accessor-descriptor/0.1.6:
@@ -864,6 +880,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       object-visit: 1.0.1
+    dev: false
+
+  /markdown-it-github-headings/2.0.0:
+    resolution: {integrity: sha512-7ET0QiS2UWCM4hZraWVT9Df0PzuTQwK//3XM1q8vtXImUCRNGwG4bapa6ToDL8M4jkPeYSMrTiTvdJqwJifC4Q==}
+    dependencies:
+      github-slugger: 1.4.0
+      innertext: 1.0.3
     dev: false
 
   /markdown-it-shiki/0.3.0:
