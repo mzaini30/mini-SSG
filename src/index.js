@@ -141,7 +141,8 @@ function generateFile(item, fileName) {
 
 		content = minify(content, {
 			collapseWhitespace: true,
-			removeComments: true
+			removeComments: true,
+			minifyJS: true
 		})
 
 		let situs = ''
