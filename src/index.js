@@ -78,7 +78,7 @@ exec(windi, () => {
 				let files = recursive('public')
 				files = files.filter(x => x.includes('.js'))
 				for (let x of files){
-					exec(`uglifyjs ${x} -c -o ${x}`, () => {})
+					exec(`uglifyjs ${x} -c -m -o ${x}`, () => {})
 				}
 			}
 		})
