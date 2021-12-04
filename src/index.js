@@ -146,7 +146,7 @@ function generateFile(item, fileName) {
 			removeComments: true,
 			minifyJS: true,
 			ignoreCustomFragments: [/\{\{[\s\S]*?\}\}/],
-			customEventAttributes: [/^(?:v-|:|@)[a-z]{3,}$/],
+			customEventAttributes: [/^(?:v-on:|@)[a-z]{3,}$/],
 			keepClosingSlash: true
 		})
 
