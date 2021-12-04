@@ -139,11 +139,18 @@ function generateFile(item, fileName) {
 			content = content.replace(patterns.windi, '')
 		}
 
+		content = content.replace(/<script type=.module.>/g, '<script>a;')
+
 		content = minify(content, {
 			collapseWhitespace: true,
 			removeComments: true,
-			minifyJS: true
+			minifyJS: true,
+			ignoreCustomFragments: [/\{\{[\s\S]*?\}\}/],
+			customEventAttributes: [/^(?:v-|:|@)[a-z]{3,}$/],
+			keepClosingSlash: true
 		})
+
+		content = content.replace(/<script>a;/g, '<script type="module">')
 
 		let situs = ''
 		if (existsSync('./mini.json')){
