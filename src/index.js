@@ -70,7 +70,18 @@ pages.forEach(function(page) {
 //Static folder
 exec(windi, () => {
 	fs.copy(dir.static, './public/')
-		.then(() => {/*console.log('success!')*/})
+		.then(() => {
+			if (!process.argv.includes('--watch')) {
+				// console.log('success!')
+				const recursive = require('recursive-readdir-sync')
+
+				let files = recursive('public')
+				files = files.filter(x => x.includes('.js'))
+				for (let x of files){
+					exec(`uglifyjs ${x} -c -o ${x}`, () => {})
+				}
+			}
+		})
 		.catch(err => err)
 })
 
