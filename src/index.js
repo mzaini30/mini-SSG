@@ -251,7 +251,6 @@ function renderPage() {
 	if(attachLabels != null) {
 		attachLabels.forEach(function(match){
 			konten = konten.replace(patterns.attach, renderLayout.bind(this, konten))
-
 		})
 
 		if (konten.match(patterns.layout) != null){
@@ -295,7 +294,7 @@ function renderPage() {
 	}
 
 	// zen
-	function cekLagi(){
+	async function cekLagi(){
 		if (
 			konten.match(patterns.markdown) != null || 
 			konten.match(patterns.simpleSection) != null ||
@@ -303,7 +302,8 @@ function renderPage() {
 			konten.match(patterns.import) != null ||
 			konten.match(patterns.component) != null
 		) {
-			renderPage()
+			await setTimeout(() => {}, 1000)
+			await renderPage()
 		} else {
 			konten = unMaskCodeTag(konten.trim())
 		}
