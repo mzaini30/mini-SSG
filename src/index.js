@@ -302,7 +302,7 @@ function renderPage() {
 			konten.match(patterns.import) != null ||
 			konten.match(patterns.component) != null
 		) {
-			await setTimeout(() => {}, 1000)
+			// await setTimeout(() => {}, 1000)
 			await renderPage()
 		} else {
 			konten = unMaskCodeTag(konten.trim())
